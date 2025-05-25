@@ -1,88 +1,72 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fighting Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Fighting Game</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: url('https://i.ibb.co/fqb4N1v/stage.jpg') no-repeat center center/cover;
+      background-color: #111;
       overflow: hidden;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
     }
-    #game {
+    .game-area {
       width: 100vw;
       height: 100vh;
       position: relative;
+      background-image: url('https://i.ibb.co/fqb4N1v/stage.jpg');
+      background-size: cover;
     }
     .fighter {
+      position: absolute;
       width: 100px;
       height: 150px;
-      position: absolute;
-      bottom: 50px;
-      background-color: red;
+      bottom: 60px;
+      background-size: cover;
     }
     #fighter1 {
-      left: 100px;
+      left: 40px;
       background-image: url('https://i.ibb.co/fYvX8kz/fighter1.png');
-      background-size: cover;
     }
     #fighter2 {
-      right: 100px;
-      background-color: blue;
+      right: 40px;
       background-image: url('https://i.ibb.co/YbKzfjP/fighter2.png');
-      background-size: cover;
     }
-    .health {
-      width: 300px;
+    .health-bar {
+      position: absolute;
+      width: 40%;
       height: 20px;
-      background-color: gray;
-      margin: 10px;
+      background-color: grey;
+      top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .health-inner {
+    .health-fill {
       height: 100%;
       background-color: green;
-    }
-    #hud {
-      position: absolute;
-      top: 0;
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
+      transition: width 0.3s;
     }
+    #health1 { left: 10px; }
+    #health2 { right: 10px; }.controls {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.btn {
+  padding: 20px 30px;
+  background-color: #d6336c;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.btn:active {
+  background-color: #ff4d79;
+}
+
   </style>
-</head>
-<body>
-  <div id="game">
-    <div id="hud">
-      <div class="health"><div id="health1" class="health-inner" style="width: 100%;"></div></div>
-      <div class="health"><div id="health2" class="health-inner" style="width: 100%;"></div></div>
-    </div>
-    <div id="fighter1" class="fighter"></div>
-    <div id="fighter2" class="fighter"></div>
-  </div>  <script>
-    let fighter1 = document.getElementById('fighter1');
-    let fighter2 = document.getElementById('fighter2');
-    let health1 = document.getElementById('health1');
-    let health2 = document.getElementById('health2');
-
-    let f1Health = 100;
-    let f2Health = 100;
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'a') {
-        // punch fighter2
-        f2Health -= 10;
-        if (f2Health < 0) f2Health = 0;
-        health2.style.width = f2Health + '%';
-      } else if (e.key === 'ArrowLeft') {
-        // punch fighter1
-        f1Health -= 10;
-        if (f1Health < 0) f1Health = 0;
-        health1.style.width = f1Health + '%';
-      }
-    });
-  </script></body>
-</html>

@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cartoon Fighter Showdown</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="startScreen">
+    <h1>Cartoon Fighter Showdown</h1>
+    <button onclick="startGame()">Start Fight</button>
+  </div>
+
+  <div id="endScreen" style="display: none;">
+    <h2 id="winnerText">Player X Wins!</h2>
+    <button onclick="location.reload()">Restart</button>
+  </div>
+
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+  <div class="controls">
+    <button onclick="move('p1', -10)">P1 Left</button>
+    <button onclick="move('p1', 10)">P1 Right</button>
+    <button onclick="attack('p1')">P1 Attack</button>
+    <button onclick="move('p2', -10)">P2 Left</button>
+    <button onclick="move('p2', 10)">P2 Right</button>
+    <button onclick="attack('p2')">P2 Attack</button>
+  </div>
+
+  <audio id="attackSound" src="punch.mp3"></audio>
+  <script src="game.js"></script>
+</body>
+</html>
